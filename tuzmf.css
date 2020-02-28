@@ -12,7 +12,6 @@
 #ham ul li{background:#900;padding:20px 25px 5px;text-align:left}
 #ham ul{display:none;padding:0!important}
 #ham input:checked ~ ul,#ham ul li{display:block!important}
-#ham li a{margin-left:-10px}
 .haml{padding-bottom:20px!important}
 h2{font-size:32px!important}
 footer{margin:40px 0 0}
@@ -51,7 +50,7 @@ h1,h2{margin:0 0 5px;font-weight:300;font-size:46px;line-height:56px}
 .mor,.tqr,#ham{text-align:right}
 #ham{left:0;box-shadow:0 0 5px 0 #444;width:100%;position:fixed;z-index:3;height:48px}
 #ham ul{list-style-type:none;margin:-25px 0}
-#ham ul li{padding:15px 20px 10px}
+#ham ul li{padding:15px 10px 10px}
 #logo{float:left;font-size:14px;padding:15px 0 12px 48px;background:url(data:image/webp;base64,UklGRjgBAABXRUJQVlA4TCwBAAAvIUAIED+gkI0kKCuyFB/B2ZzmcZ2GgrZtmH02n0b54xmZBsTk4TMd9E/jM//xf2AkZC4Os2FNkhXg2NbeRtEAG5BNqJ3rkSa0BA29g0Qv219P3v/v/xcsIaL/Ctu2bZju3TeUcq4ueTw7p7bsShm0Vj2KWlY3pEwFkf1ExYRsG5kryeBEeUQj9UA4eqCVBvA4STNreQRpPdFAQ8dmAiprYEeLnGVn0NgBTRXROFGYc4X9b85NqE4fd603sZsrXJxb0J4+740d9+d5JFQgvP92fvh8WIGtCyBbS5ShAMJmBej/bJxbECDjlW8MEcfV0km0kne11YU2eaQ+r+40CzgRCFqPuR5SENbfN48kHv8QpCXx+z8qUfNDmQtb+8j4hBvB+1VQEjilFMc7lAE=) no-repeat 7px 7px}
 #logo a{padding:7px 0 5px 41px;margin-left:-41px}
 a,#logo{font-weight:700}
