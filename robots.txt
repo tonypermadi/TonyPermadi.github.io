@@ -1,4 +1,11 @@
 User-agent: *
 Disallow: /BingSiteAuth.xml
+
+User-agent: *
 Disallow: /README.md
+
+User-agent: *
 Disallow: /CNAME
+
+User-agent: *
+Disallow:
