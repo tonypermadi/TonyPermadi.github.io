@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /404.html
+Disallow: /BingSiteAuth.xml
+Disallow: /CNAME
+Disallow: /README.md
+Sitemap: https://tony.permadi.id/sitemap.xml
+Host: tony.permadi.id
