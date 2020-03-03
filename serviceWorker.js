@@ -16,7 +16,7 @@ sync function getData() {
    cachedData = await getCachedData( cacheName, url );
    await deleteOldCaches( cacheName );
 
-   return cachedData;
+   return cachedData
 }
 
 async function getCachedData( cacheName, url ) {
