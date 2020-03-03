@@ -1,26 +1,25 @@
-let CACHE_NAME = 'sw-v1'
-self.addEventListener('install', (event) => {
-event.waitUntil(
-caches.open(CACHE_NAME)
-.then(cache => cache.addAll('https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp'))
-)
-})
-self.addEventListener('fetch', (event) => {
-if (event.request.method === 'GET') {
-event.respondWith(
-caches.match(event.request)
-.then((cached) => {
-var networked = fetch(event.request)
-.then((response) => {
-let cacheCopy = response.clone()
-caches.open(CACHE_NAME)
-.then(cache => cache.put(event.request, cacheCopy))
-return response;
-})
-.catch(() => caches.match(offlinePage));
-return cached || networked;
-})
-)
+if ('serviceWorker' in navigator) {
+window.addEventListener('load', () => {
+navigator.serviceWorker.register('/serviceWorker.js');
+});
 }
-return;
+self.addEventListener('install', (event) => {
+function onInstall () {
+return caches.open('static')
+.then(cache =>
+cache.addAll([
+'https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp',
+'/'
+])
+);
+}
+event.waitUntil(onInstall(event));
+});
+console.log('Inside the install handler:', event);
+});
+self.addEventListener('activate', (event) => {
+console.log('Inside the activate handler:', event);
+});
+self.addEventListener(fetch, (event) => {
+  console.log('Inside the fetch handler:', event);
 });
