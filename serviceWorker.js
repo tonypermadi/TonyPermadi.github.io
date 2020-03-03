@@ -2,7 +2,7 @@ let CACHE_NAME = 'sw-v1'
 self.addEventListener('install', (event) => {
 event.waitUntil(
 caches.open(CACHE_NAME)
-.then(cache => cache.addAll('/'))
+.then(cache => cache.addAll('https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp'))
 )
 })
 self.addEventListener('fetch', (event) => {
