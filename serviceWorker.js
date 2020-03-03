@@ -1,10 +1,18 @@
-let CACHE_NAME = 'sw-v1'
-self.addEventListener('install', (event) => {
-event.waitUntil(
-caches.open(CACHE_NAME)
-.then(cache => cache.addAll['https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp','/'])
-)
-})
+'use strict';
+self.addEventListener('install', event => {
+function onInstall () {
+return caches.open('static')
+.then(cache =>
+cache.addAll([
+'https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp',
+'/'
+])
+);
+}
+event.waitUntil(onInstall(event));
+});
+self.addEventListener('activate', event => {
+});
 self.addEventListener('fetch', (event) => {
 if (event.request.method === 'GET') {
 event.respondWith(
