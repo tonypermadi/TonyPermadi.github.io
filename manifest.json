@@ -4,12 +4,12 @@
 "description":"The personal website of Tony Permadi",
 "icons":[
 {
-"src":"https://res.cloudinary.com/tony-permadi/image/upload/tp-192-icon.png",
+"src":"/tp-192-icon.png",
 "type":"image/png",
 "sizes":"192x192"
 },
 {
-"src":"https://res.cloudinary.com/tony-permadi/image/upload/tp-512-icon.png",
+"src":"/tp-512-icon.png",
 "type":"image/png",
 "sizes":"512x512"
 }
