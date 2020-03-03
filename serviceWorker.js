@@ -19,7 +19,6 @@ sync function getData() {
    return cachedData;
 }
 
-// Get data from the cache.
 async function getCachedData( cacheName, url ) {
    const cacheStorage   = await caches.open( cacheName );
    const cachedResponse = await cacheStorage.match( url );
@@ -31,7 +30,6 @@ async function getCachedData( cacheName, url ) {
    return await cachedResponse.json();
 }
 
-// Delete any old caches to respect user's disk space.
 async function deleteOldCaches( currentCache ) {
    const keys = await caches.keys();
 
