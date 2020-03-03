@@ -1,52 +1,84 @@
-sync function getData() {
-   const cacheVersion = 1;
-   const cacheName    = `myapp-${ cacheVersion }`;
-   const url          = 'https://tony.permadi.id/';
-   let cachedData     = await getCachedData( cacheName, url );
+self.addEventListener("install", function(event) {
+  console.log('WORKER: install event in progress.');
+  event.waitUntil(
+    caches
+      .open(version + 'fundamentals')
+      .then(function(cache) {
+        return cache.addAll([
+'https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp',
+'/'
+        ]);
+      })
+      .then(function() {
+        console.log('WORKER: install completed');
+      })
+  );
+});
 
-   if ( cachedData ) {
-      console.log( 'Retrieved cached data' );
-      return cachedData;
-   }
+self.addEventListener("fetch", function(event) {
+  console.log('WORKER: fetch event in progress.');
+  if (event.request.method !== 'GET') {
+    console.log('WORKER: fetch event ignored.', event.request.method, event.request.url);
+    return;
+  }
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then(function(cached) {
+        var networked = fetch(event.request)
+          .then(fetchedFromNetwork, unableToResolve)
+          .catch(unableToResolve);
+        console.log('WORKER: fetch event', cached ? '(cached)' : '(network)', event.request.url);
+        return cached || networked;
 
-   console.log( 'Fetching fresh data' );
+        function fetchedFromNetwork(response) {
+          var cacheCopy = response.clone();
 
-   const cacheStorage = await caches.open( cacheName );
-   await cacheStorage.add( url );
-   cachedData = await getCachedData( cacheName, url );
-   await deleteOldCaches( cacheName );
+          console.log('WORKER: fetch response from network.', event.request.url);
 
-   return cachedData
-}
+          caches
+            .open(version + 'pages')
+            .then(function add(cache) {
+              cache.put(event.request, cacheCopy);
+            })
+            .then(function() {
+              console.log('WORKER: fetch response stored in cache.', event.request.url);
+            });
 
-async function getCachedData( cacheName, url ) {
-   const cacheStorage   = await caches.open( cacheName );
-   const cachedResponse = await cacheStorage.match( url );
+          return response;
+        }
+        function unableToResolve () {
+          console.log('WORKER: fetch request failed in both cache and network.');
+          return new Response('<h1>Service Unavailable</h1>', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: new Headers({
+              'Content-Type': 'text/html'
+            })
+          });
+        }
+      })
+  );
+});
 
-   if ( ! cachedResponse || ! cachedResponse.ok ) {
-      return false;
-   }
-
-   return await cachedResponse.json();
-}
-
-async function deleteOldCaches( currentCache ) {
-   const keys = await caches.keys();
-
-   for ( const key of keys ) {
-      const isOurCache = 'myapp-' === key.substr( 0, 6 );
-
-      if ( currentCache === key || ! isOurCache ) {
-         continue;
-      }
-
-      caches.delete( key );
-   }
-}
-
-try {
-   const data = await getData();
-   console.log( { data } );
-} catch ( error ) {
-   console.error( { error } );
-}
+self.addEventListener("activate", function(event) {
+  console.log('WORKER: activate event in progress.');
+  event.waitUntil(
+    caches
+      .keys()
+      .then(function (keys) {
+        return Promise.all(
+          keys
+            .filter(function (key) {
+              return !key.startsWith(version);
+            })
+            .map(function (key) {
+              return caches.delete(key);
+            })
+        );
+      })
+      .then(function() {
+        console.log('WORKER: activate completed.');
+      })
+  );
+});
