@@ -1,25 +1,54 @@
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('/serviceWorker.js');
-});
+sync function getData() {
+   const cacheVersion = 1;
+   const cacheName    = `myapp-${ cacheVersion }`;
+   const url          = 'https://tony.permadi.id/';
+   let cachedData     = await getCachedData( cacheName, url );
+
+   if ( cachedData ) {
+      console.log( 'Retrieved cached data' );
+      return cachedData;
+   }
+
+   console.log( 'Fetching fresh data' );
+
+   const cacheStorage = await caches.open( cacheName );
+   await cacheStorage.add( url );
+   cachedData = await getCachedData( cacheName, url );
+   await deleteOldCaches( cacheName );
+
+   return cachedData;
 }
-self.addEventListener('install', (event) => {
-function onInstall () {
-return caches.open('static')
-.then(cache =>
-cache.addAll([
-'https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp',
-'/'
-])
-);
+
+// Get data from the cache.
+async function getCachedData( cacheName, url ) {
+   const cacheStorage   = await caches.open( cacheName );
+   const cachedResponse = await cacheStorage.match( url );
+
+   if ( ! cachedResponse || ! cachedResponse.ok ) {
+      return false;
+   }
+
+   return await cachedResponse.json();
 }
-event.waitUntil(onInstall(event));
-});
-console.log('Inside the install handler:', event);
-});
-self.addEventListener('activate', (event) => {
-console.log('Inside the activate handler:', event);
-});
-self.addEventListener(fetch, (event) => {
-  console.log('Inside the fetch handler:', event);
-});
+
+// Delete any old caches to respect user's disk space.
+async function deleteOldCaches( currentCache ) {
+   const keys = await caches.keys();
+
+   for ( const key of keys ) {
+      const isOurCache = 'myapp-' === key.substr( 0, 6 );
+
+      if ( currentCache === key || ! isOurCache ) {
+         continue;
+      }
+
+      caches.delete( key );
+   }
+}
+
+try {
+   const data = await getData();
+   console.log( { data } );
+} catch ( error ) {
+   console.error( { error } );
+}
