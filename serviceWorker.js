@@ -1,34 +1,57 @@
-'use strict';
-self.addEventListener('install', event => {
-function onInstall () {
-return caches.open('static')
-.then(cache =>
-cache.addAll([
-'https://res.cloudinary.com/tony-permadi/image/upload/tpimg.webp',
-'/'
-])
-);
-}
-event.waitUntil(onInstall(event));
+var CACHE_VERSION = 1;
+var CURRENT_CACHES = {
+  'read-through': 'read-through-cache-v' + CACHE_VERSION
+};
+
+self.addEventListener('activate', function(event) {
+  var expectedCacheNames = Object.keys(CURRENT_CACHES).map(function(key) {
+    return CURRENT_CACHES[key];
+  });
+
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (expectedCacheNames.indexOf(cacheName) === -1) {
+            console.log('Deleting out of date cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
 });
-self.addEventListener('activate', event => {
-});
-self.addEventListener('fetch', (event) => {
-if (event.request.method === 'GET') {
-event.respondWith(
-caches.match(event.request)
-.then((cached) => {
-var networked = fetch(event.request)
-.then((response) => {
-let cacheCopy = response.clone()
-caches.open(CACHE_NAME)
-.then(cache => cache.put(event.request, cacheCopy))
-return response;
-})
-.catch(() => caches.match(offlinePage));
-return cached || networked;
-})
-)
-}
-return;
+
+self.addEventListener('fetch', function(event) {
+  console.log('Handling fetch event for', event.request.url);
+
+  event.respondWith(
+    caches.open(CURRENT_CACHES['read-through']).then(function(cache) {
+      return cache.match(event.request).then(function(response) {
+        if (response) {
+          console.log(' Found response in cache:', response);
+
+          return response;
+        }
+
+        console.log(' No response for %s found in cache. ' +
+          'About to fetch from network...', event.request.url);
+
+        return fetch(event.request.clone()).then(function(response) {
+          console.log('  Response for %s from network is: %O',
+            event.request.url, response);
+
+          if (response.status < 400) {
+            cache.put(event.request, response.clone());
+          }
+
+          return response;
+        });
+      }).catch(function(error) {
+        console.error('  Read-through caching failed:', error);
+
+        throw error;
+      });
+    })
+  );
 });
