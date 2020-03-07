@@ -1,39 +1,24 @@
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('/sw.js')
-.then((reg) => {
-console.log('Service worker registered.', reg);
-});
-});
-}
-const FILES_TO_CACHE = [
-'/index.html',
-];
-evt.waitUntil(
-caches.open(CACHE_NAME).then((cache) => {
-console.log('[ServiceWorker] Pre-caching offline page');
-return cache.addAll(FILES_TO_CACHE);
+const cacheName = `tony-permadi`;
+self.addEventListener('install', e => {
+e.waitUntil(
+caches.open(cacheName).then(cache => {
+return cache.addAll([
+`/`,
+`/index.html`
+])
+.then(() => self.skipWaiting());
 })
 );
-evt.waitUntil(
-caches.keys().then((keyList) => {
-return Promise.all(keyList.map((key) => {
-if (key !== CACHE_NAME) {
-console.log('[ServiceWorker] Removing old cache', key);
-return caches.delete(key);
-}
-}));
-})
-);
-if (evt.request.mode !== 'navigate') {
-return;
-}
-evt.respondWith(
-fetch(evt.request)
-.catch(() => {
-return caches.open(CACHE_NAME)
-.then((cache) => {
-return cache.match('index.html');
 });
+self.addEventListener('activate', event => {
+event.waitUntil(self.clients.claim());
+});
+self.addEventListener('fetch', event => {
+event.respondWith(
+caches.open(cacheName)
+.then(cache => cache.match(event.request, {ignoreSearch: true}))
+.then(response => {
+return response || fetch(event.request);
 })
 );
+});
