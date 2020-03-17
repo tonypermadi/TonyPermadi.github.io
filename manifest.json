@@ -1,7 +1,4 @@
 {
-"title":"Tony Permadi PWA",
-"$schema":"http://json-schema.org/draft-04/schema#",
-"type":"object",
 "name":"Tony.Permadi.id",
 "short_name":"Tony.Permadi.id",
 "start_url":"index.html",
