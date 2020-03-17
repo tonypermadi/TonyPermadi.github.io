@@ -6,5 +6,10 @@ Disallow: /nortonsw_9e7d2f80-459b-0.html
 Disallow: /CNAME
 Disallow: /README.md
 Disallow: /sw.js
+
+User-agent: *
+Allow: /*.png$
+Allow: /*.jpg$
+
 Sitemap: https://tony.permadi.id/sitemap.xml
 Host: tony.permadi.id
