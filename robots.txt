@@ -3,9 +3,6 @@ Disallow: /404.html
 Disallow: /BingSiteAuth.xml
 Disallow: /CNAME
 Disallow: /README.md
-Disallow: /tp-192-icon.png
-Disallow: /tp-512-icon.png
-Disallow: /manifest.json
 Disallow: /serviceWorker.js
 Sitemap: https://tony.permadi.id/sitemap.xml
 Host: tony.permadi.id
