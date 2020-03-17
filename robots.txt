@@ -1,8 +1,10 @@
 User-agent: *
 Disallow: /404.html
 Disallow: /BingSiteAuth.xml
+Disallow: /mywotc4e64c09225355b662f4.html
+Disallow: /nortonsw_9e7d2f80-459b-0.html
 Disallow: /CNAME
 Disallow: /README.md
-Disallow: /serviceWorker.js
+Disallow: /sw.js
 Sitemap: https://tony.permadi.id/sitemap.xml
 Host: tony.permadi.id
