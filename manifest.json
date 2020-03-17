@@ -1,13 +1,9 @@
-"$schema":"https://json-schema.org/draft/2019-09/schema",
-"$id":"https://json-schema.org/draft/2019-09/schema",
-"type":"object",
-"properties":{
 {
 "name":"Tony.Permadi.id",
 "short_name":"Tony.Permadi.id",
 "start_url":"index.html",
 "display":"standalone",
-"background_color":"#fff",
+"background_color":"#ffffff",
 "description":"The Personal Website of Tony Permadi",
 "scope":"/",
 "theme_color":"#c00",
@@ -19,6 +15,5 @@
 "src":"https://res.cloudinary.com/tonyp/512.png",
 "sizes":"512x512",
 "type":"image/png"
-}],
-}
+}]
 }
