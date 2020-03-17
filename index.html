@@ -4,9 +4,11 @@
 <meta charset=utf-8>
 <link rel=dns-prefetch href=https://res.cloudinary.com>
 <link rel=preconnect href=https://res.cloudinary.com>
-<link rel=icon type=image/png sizes=192x192 href=/ico192.png>
-<link rel=apple-touch-icon sizes=180x180 href=/ico180.png>
-<link rel=manifest href=/manifest.json>
+<link rel=dns-prefetch href=https://cdn.ampproject.org>
+<link rel=preconnect href=https://cdn.ampproject.org>
+<link rel=icon type=image/png sizes=192x192 href=//res.cloudinary.com/tonyp/ico192.png>
+<link rel=apple-touch-icon sizes=180x180 href=//res.cloudinary.com/tonyp/ico180.png>
+<link rel=manifest href=//res.cloudinary.com/tonyp/raw/upload/manifest.json>
 <link rel=canonical href=https://tony.permadi.id>
 <meta name=viewport content=width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes>
 <meta name=theme-color content=#c00>
@@ -38,7 +40,8 @@
 <script async custom-element=amp-iframe src=https://cdn.ampproject.org/v0/amp-iframe-0.1.js></script>
 <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style>
-<style amp-custom>*{box-sizing:border-box}
+<style amp-custom>
+*{box-sizing:border-box}
 ::-webkit-scrollbar{display:none}
 a{color:#c00;font-weight:700;outline-width:0;background:none;text-decoration:none}
 a:focus{background:none}
@@ -103,7 +106,17 @@ body h1,body h2,body h1 a,body h2 a{color:#000;font-weight:300}
 h1,h2{margin:0 0 5px}
 .hro amp-img{height:100vh}
 .hro amp-img img{object-fit:cover}
-main amp-img{border:1px solid #000}</style>
+main amp-img{border:1px solid #000}
+
+.img1,.img2,.img3,.img4,.img5,.img6{max-width:100%;background-repeat:no-repeat;background-size:100%;background-image:url(https://res.cloudinary.com/tonyp/tpimg.webp)}
+.img1{background-position:0 0%}
+.img2{background-position:0 20%}
+.img3{background-position:0 40%}
+.img4{background-position:0 60%}
+.img5{background-position:0 80%}
+.img6{background-position:0 100%}
+
+</style>
 </head>
 <body>
 <input type=checkbox id=mto><label for=mto class=mni><span></span></label>
@@ -117,7 +130,7 @@ main amp-img{border:1px solid #000}</style>
 <div class=row>
 <div class='thc1 m0 rltv'>
 <amp-iframe width=1 height=1 layout=responsive src='//cdn.ampproject.org'>
-<amp-img layout=fill src='https://res.cloudinary.com/tonyp/001s.jpg' placeholder></amp-img>
+<amp-img layout=fill class=img1 src='data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAvAAAAEAfQ//73PwIR0f8A' placeholder></amp-img>
 </amp-iframe>
 </div>
 <div class=thc2>
@@ -137,7 +150,7 @@ main amp-img{border:1px solid #000}</style>
 </div>
 <div class='thc4 m0 rltv'>
 <amp-iframe width=1 height=1 layout=responsive src='//cdn.ampproject.org'>
-<amp-img layout=fill src='https://res.cloudinary.com/tonyp/002s.jpg' placeholder></amp-img>
+<amp-img layout=fill class=img2 src='data:image/webp;base64,UklGRhwAAABXRUJQVlA4TBAAAAAvAAAAEAfQ//73PwIR0f8A' placeholder></amp-img>
 </amp-iframe>
 </div>
 </div>
