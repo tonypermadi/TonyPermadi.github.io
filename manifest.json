@@ -1,11 +1,9 @@
 {
 "name":"Tony.Permadi.id",
 "short_name":"Tony.Permadi.id",
-"start_url":"index.html",
 "display":"standalone",
 "background_color":"#ffffff",
 "description":"The Personal Website of Tony Permadi",
-"scope":"/",
 "theme_color":"#c00",
 "icons":[{
 "src":"https://res.cloudinary.com/tonyp/192.png",
