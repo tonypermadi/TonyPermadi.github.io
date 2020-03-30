@@ -7,12 +7,24 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
 <script type="text/javascript">(function(){emailjs.init("user_rJUTKT5GfQnDX5A7VRhDO");})();</script>
 <style>
-html{margin:0}
-body,#contact-form,#contact-form input,textarea{font-family:Roboto,sans-serif;font-size:16px;line-height:28px}
-#contact-form{width:320px;margin:0 auto}
-#contact-form input{padding:2px 8px;width:304px}
-textarea{width:306px;height:140px;padding:4px 8px}
-#contact-form #subm{width:100px;height:30px}
-#subx{text-align:center}
+html,body,form#cform{margin:0}
+body,#cform,#cform input,textarea{font-family:Roboto,sans-serif;font-size:16px;line-height:28px}
+#cform{width:320px;margin:0 auto}
+#cform input{padding:2px 8px;width:312px}
+#cform #subm{width:100px;height:30px}
+#cform #subx{text-align:center}
+#cform textarea{width:300px;height:140px;padding:4px 8px}
 </style>
-</head><body><form id=contact-form><input type=hidden name=contact_number><p><label>Full Name:</label><br><input type=text name=user_name></p><p><label>Email Address:</label><br><input type=email name=user_email></p><p><label>Message:</label><br><textarea name=message></textarea></p><p id=subx><input id=subm type=submit value=Send></p></form></body></html>
+</head>
+<body>
+<form id=cform>
+<input type=hidden name=contact_number>
+<p><label>Full Name:</label><br>
+<input type=text name=user_name></p>
+<p><label>Email Address:</label><br>
+<input type=email name=user_email></p>
+<p><label>Message:</label><br>
+<textarea name=message_html></textarea></p>
+<p id=subx>
+<input id=subm type=submit value=Send></p></form>
+</body></html>
