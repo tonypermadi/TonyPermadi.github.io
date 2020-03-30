@@ -5,8 +5,16 @@
 <link rel=preload as=script href=https://www.gstatic.com/recaptcha/releases/P6KLRNy7h3K160ZmYNUOAce7/recaptcha__en.js>
 <link rel=preload as=image href=https://www.gstatic.com/recaptcha/api2/logo_48.png>
 <link rel=preload as=font href=https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2>
-<link rel=preload as=worker href=https://www.google.com/recaptcha/api2/webworker.js>
-<title>Contact Form</title><meta name=viewport content='width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes'><style>html,body{margin:0}body,#myform,#myform input,textarea{font-family:Roboto,sans-serif;font-size:16px;line-height:24px}#myform{width:300px;margin:30px auto}#myform input{padding:4px 8px 2px;width:282px}#myform #subm{width:100px;height:30px}#myform #subx{text-align:center}#myform textarea{width:284px;height:140px;padding:4px 8px}</style></head><body>
+<title>Contact Form</title><meta name=viewport content='width=device-width,initial-scale=1,minimum-scale=1,user-scalable=yes'>
+<style>html,body{margin:0}body,#myform,#myform input,textarea{font-family:Roboto,sans-serif;font-size:16px;line-height:24px}#myform{width:300px;margin:30px auto}#myform input{padding:4px 8px 2px;width:282px}#myform #subm{width:100px;height:30px}#myform #subx{text-align:center}#myform textarea{width:284px;height:140px;padding:4px 8px}</style>
+<script src=https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js></script>
+<script>
+<script>
+(function(){
+emailjs.init('user_rJUTKT5GfQnDX5A7VRhDO');
+})();
+</script>
+</head><body>
 <form id=myform>
 <p><label>Full Name:</label><br>
 <input name=user_name></p>
@@ -17,19 +25,12 @@
 <script src=https://www.google.com/recaptcha/api.js></script>
 <div class=g-recaptcha data-sitekey=6Ldf7uQUAAAAAEeiVryOxmqnJEeV95koyyFeo8a9></div>
 <p id=subx><button id=subm>Send</button></p></form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
-<script>
-<script type='text/javascript'>
-(function(){
-emailjs.init("user_rJUTKT5GfQnDX5A7VRhDO");
-})();
-</script>
+<script src=https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js></script>
 <script>
 var myform = $('form#myform');
 myform.submit(function(event){
 event.preventDefault();
-var service_id = 'default_service';
+var service_id = 'tony_permadi_id';
 var template_id = 'template_xGvEC3QU';
 myform.find('button').text('Sending ...');
 emailjs.sendForm(service_id,template_id,myform[0])
