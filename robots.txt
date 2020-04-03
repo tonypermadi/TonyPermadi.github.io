@@ -7,6 +7,7 @@ Disallow: /CNAME
 Disallow: /README.md
 Disallow: /sw.js
 Disallow: /*.png
+Disallow: /*.webp
 Disallow: /*.ico
 Disallow: /img/*.jpg$
 
