@@ -33,7 +33,7 @@
 <p>Tony.Permadi.id is a PWA-Compliant Website. You can install it as an Android App for offline viewing.<p>
 <button id=inst>Install</button>
 
-<p>Copyright &copy; 2022 Tony Permadi. All rights reserved.</p><p id=ttop><a href='#' aria-label=Go-to-Top><svg xmlns='http://www.w3.org/2000/svg' width=36 height=36><path fill='#c00' d='M14 18v12h7V18h5L18 7 9 18z'/></svg></a></p>
+<p>Copyright &copy; <span id=year></span> Tony Permadi. All rights reserved.</p><p id=ttop><a href='#' aria-label=Go-to-Top><svg xmlns='http://www.w3.org/2000/svg' width=36 height=36><path fill='#c00' d='M14 18v12h7V18h5L18 7 9 18z'/></svg></a></p>
 </footer>
 
 <nav>
@@ -58,6 +58,6 @@ Follow Me:<br><br><a href=https://www.facebook.com/tony.permadi.id aria-label=To
 </p>
 </nav>
 
-<script>if('serviceWorker' in navigator){console.log('SW reg.');navigator.serviceWorker.register('../sw.js').then(function(){console.log('SW OK.');},function(){console.log('SW failed.');});}else{console.log('SW not supported.');}let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;showInstallPromotion();console.log("beforeinstallprompt fired");const installButton=document.getElementById("inst");installButton.hidden=false;installButton.addEventListener("click",installApp);});function installApp(){deferredPrompt.prompt();installButton.disabled=true;deferredPrompt.userChoice.then(choiceResult=>{if(choiceResult.outcome==="accepted"){console.log("PWA accepted");installButton.hidden=true;}else{console.log("PWA rejected");}installButton.disabled=false;deferredPrompt=null;});}</script>
+<script>if('serviceWorker' in navigator){console.log('SW reg.');navigator.serviceWorker.register('../sw.js').then(function(){console.log('SW OK.');},function(){console.log('SW failed.');});}else{console.log('SW not supported.');}let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;showInstallPromotion();console.log("beforeinstallprompt fired");const installButton=document.getElementById("inst");installButton.hidden=false;installButton.addEventListener("click",installApp);});function installApp(){deferredPrompt.prompt();installButton.disabled=true;deferredPrompt.userChoice.then(choiceResult=>{if(choiceResult.outcome==="accepted"){console.log("PWA accepted");installButton.hidden=true;}else{console.log("PWA rejected");}installButton.disabled=false;deferredPrompt=null;});}document.getElementById('year').innerHTML=(new Date().getFullYear());</script>
 </body>
 </html>
