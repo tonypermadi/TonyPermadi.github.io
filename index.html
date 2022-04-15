@@ -5,7 +5,6 @@
 <meta name=viewport content='width=device-width'>
 <link rel=preconnect href=https://cdn.statically.io crossorigin>
 <link rel=preload as=style href=https://cdn.statically.io/gh/tonypermadi/website/2c532cda/styles.css>
-<link rel=preload as=script href=https://cdn.statically.io/gh/tonypermadi/website/2c532cda/global.js>
 <link rel=preload as=image href=https://cdn.statically.io/gh/tonypermadi/website/c6c7504e/android-apps/idx-top-10-apps-for-id.png>
 <link rel=preload as=image href=https://cdn.statically.io/gh/tonypermadi/website/c6c7504e/192.png>
 <link rel=preload as=image href=https://cdn.statically.io/gh/tonypermadi/website/c6c7504e/favicon.ico>
@@ -27,6 +26,6 @@
 <main>
 <p><img width=528 height=528 alt=Top-10-Apps src=https://cdn.statically.io/gh/tonypermadi/website/c6c7504e/android-apps/idx-top-10-apps-for-id.png></p>
 </main>
-<script src=https://cdn.statically.io/gh/tonypermadi/website/2c532cda/global.js></script>
+<script>if('serviceWorker' in navigator){console.log('CLIENT: SW reg in progress.');navigator.serviceWorker.register('../sw.js').then(function(){console.log('CLIENT: SW reg OK.');},function(){console.log('CLIENT: SW reg failed.');});}else{console.log('CLIENT: SW not supported.');}</script>
 </body>
 </html>
