@@ -95,4 +95,5 @@ and other stuff.</p>
 </nav>
 
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../sw.js').then(function(){console.log('SW OK.');},function(){console.log('SW failed.');});}else{console.log('SW failed!');}let deferredPrompt;const installButton=document.getElementById("install_button");window.addEventListener("beforeinstallprompt",e=>{console.log("beforeinstallprompt fired");e.preventDefault();deferredPrompt=e;installButton.hidden=false;installButton.addEventListener("click",installApp);});function installApp(){deferredPrompt.prompt();installButton.disabled=true;deferredPrompt.userChoice.then(choiceResult=>{if(choiceResult.outcome==="accepted"){console.log("PWA accepted");installButton.hidden=true;}else{console.log("PWA rejected");}installButton.disabled=false;deferredPrompt=null;});}document.getElementById('year').innerHTML=(new Date().getFullYear());</script>
+<script async src=https://cse.google.com/cse.js?cx=012323523404549172117:gaorv-swygk></script>
 </body></html>
