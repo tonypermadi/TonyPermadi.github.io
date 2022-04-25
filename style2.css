@@ -50,13 +50,20 @@ main{margin:0 auto}
 .gbk{font-size:48px}
 .lan,.row,footer,.gbk{margin-top:50px}
 #srchf{margin:25px 15px}
-#mysc,#subm{border-radius:25px;font-size:16px}
+#instb,#mysc,#subm{border-radius:25px}
+#mysc,#subm{font-size:16px}
 #mysc{padding:2px 55px 0 15px}
 #mymg{margin-top:-37px;line-height:24px;padding:5px 0;width:20%;float:right;border:0;font-size:24px}
 #instb,#subm{font-weight:600}
-#instb{padding:8px 10px;border-radius:4px;background-color:#ebf;border:1px solid #c9c;font-weight:600}
-#instb:active{position:relative;top:1px}
 #talit{width:80%;margin:0 auto 20px;text-align:center}
+#myform input,textarea{border:1px solid;width:300px;padding:5px 10px}
+#myform{width:300px;margin:20px auto 0}
+textarea{height:240px}
+#instb{padding:8px 10px}
+#instb,#subm{background:linear-gradient(to bottom,#ffec64 5%,#ffab23 100%);background-color:#ffec64;border:1px solid #fa2;cursor:pointer;display:inline-block;outline:none}
+#instb:active,#subm:active{position:relative;top:1px}
+#subm{padding:8px 24px}
+#instb:hover,#subm:hover{background:linear-gradient(to bottom,#ffab23 5%,#ffec64 100%);background-color:#ffab23}
 
 @media (max-width:767px){
 main{max-width:92.225%;margin:15px auto}
@@ -101,10 +108,3 @@ footer{padding:40px 0 30px}
 }
 
 @media (min-width:1200px){main{max-width:1024px}}
-
-#myform input,textarea{border:1px solid;width:300px;padding:5px 10px}
-#myform{width:300px;margin:20px auto 0}
-textarea{height:240px}
-#subm{background:linear-gradient(to bottom,#ffec64 5%,#ffab23 100%);background-color:#ffec64;border:1px solid #fa2;cursor:pointer;display:inline-block;outline:none;padding:8px 24px}
-#subm:hover{background:linear-gradient(to bottom,#ffab23 5%,#ffec64 100%);background-color:#ffab23}
-#subm:active{position:relative;top:1px}
