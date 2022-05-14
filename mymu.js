@@ -12,5 +12,5 @@ do{
 currentDate=Date.now();
 }while(currentDate-date<milliseconds);
 }
-sleep(2000);
+sleep(1);
 loadTrack(track_index);
