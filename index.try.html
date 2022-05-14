@@ -113,7 +113,7 @@ and other stuff.</p>
 
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('../sw.js').then(function(){console.log('SW OK.');},function(){console.log('SW failed.');});}else{console.log('SW failed!');}let deferredPrompt;const installButton=document.getElementById("instb");window.addEventListener("beforeinstallprompt",e=>{console.log("beforeinstallprompt fired");e.preventDefault();deferredPrompt=e;installButton.hidden=false;installButton.addEventListener("click",installApp);});function installApp(){deferredPrompt.prompt();installButton.disabled=true;deferredPrompt.userChoice.then(choiceResult=>{if(choiceResult.outcome==="accepted"){console.log("PWA accepted");installButton.hidden=true;}else{console.log("PWA rejected");}installButton.disabled=false;deferredPrompt=null;});}document.getElementById('year').innerHTML=(new Date().getFullYear());</script>
 <script>
-let track_genre=document.querySelector(".genre");let playpause_btn=document.querySelector(".playpause-track");let next_btn=document.querySelector(".next-track");let track_index=0;let isPlaying=false;let curr_track=document.createElement('audio');curr_track.preload='none';let track_list=[
+let track_genre=document.querySelector(".genre");let playpause_btn=document.querySelector(".playpause-track");let next_btn=document.querySelector(".next-track");let track_index=0;let isPlaying=false;let curr_track=document.createElement('audio');curr_track.preload='metadata';let track_list=[
 {genre:"Jazz",path:"https://jking.cdnstream1.com/b22139_128mp3"},
 {genre:"1980s",path:"https://makri.cdnstream.com/1898_128"},
 {genre:"Country",path:"https://listen.181fm.com/181-kickincountry_128k.mp3"},
