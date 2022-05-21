@@ -1,0 +1,30 @@
+<html>
+<head>
+<link rel=icon type=image/png sizes=48x48 href=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAMFBMVEVHcEz7/f0ERoL+1BYBLGrF5fOZw9xomLk3cZ/mwi8qWWdddlbCrjGOlEjz1Wrt3JvmvDGFAAAAAXRSTlMAQObYZgAAAl1JREFUeAGllLVbXE0UxhennY8v7icXhwpdi8wzK/EgM9Ch92Yr3LoY9tDFg7tXSEW5W8Xd06WMJ/9Aztx16fh1875Hxg3b4mLLxVhy8jUKtD9aT2WAKJlROobrzlS4nkIh57Nn+NEMsPA+c5B7qwCxApwI1RNpboEXE9AQPYnmeHTZaCxYV1pCEmDDKw8PD4+E1qJnpI5N0LFQR0CPpxu6btmaW1n1vISA0ZGjVx9ldHBIYetKbaBSdgHyiPWXEbLDxSCzRVqy0qsCY4GZdhKd6pytGaY7jblyZayVEHFpaKD1EI5G7dJQsJJxrg+Dm0U3bU17jM6m3G6ck3HTTiQ7W+vIng9oFNbKfb1V8NpBvGiEHJSbZpbLzi146SzbUUZ8pMl1jrRg73ypc+IHl2ocvo0ZvQrqIpDw5dat4YdnX8vlDYTqf40/v206r8n9qiMEdV+pg88473UYEg/jWVwlgvt1TeW8jWJfA8L6ONlZtkPfjU7Oyyn4rhPrK9uh6im7MnZwwWYcvvvhlD30Zcxxtax3dv2Ez3CITqyF+v/pglefNgI21gHWp1fa4eQq790w+c8picJQ+o46TLiq8aozBe7AyQIoV+UCnTs1tXG2YMYWYpTxMvLftCY43LIqV/zGDNjlFs4ITa0+V+BWgncEFhd76nbbqoRaf9QI9oARD0oWK+vo7BK8w3NTaQl9GeDcdVqomgAjOA1B0Mjstbs61ap8t2wd0gRZUvo6XTmYEEIK6GRklAN2CKU3RxpZmfVwIvIBep0OR6jqvb3SYJmGKFzS6Ir5LaQkG7bLP1w7t77bWJuoAAAAAElFTkSuQmCC>
+<title>MetroTV</title>
+</head>
+<body style=background:#000;margin:0>
+<script src=hls.js></script>
+<video style=width:100vw;height:100vh id=video controls="" src=blob:https://hls-js.netlify.app/48b48da4-be42-4b62-bf2a-c240eaaa25d4></video>
+<script>
+var video=document.getElementById('video');
+var source='http://edge.metrotvnews.com:1935/live-edge/smil:metro.smil/playlist.m3u8';
+if(Hls.isSupported()){
+var hls=new Hls({
+debug:false,
+});
+hls.loadSource(source);
+hls.attachMedia(video);
+hls.on(Hls.Events.MEDIA_ATTACHED, function(){
+video.muted=false;
+video.play();
+});
+}
+else if(video.canPlayType('application/vnd.apple.mpegurl')){
+video.src=(source);
+video.addEventListener('canplay', function(){
+video.play();
+});
+}
+</script>
+</body></html>

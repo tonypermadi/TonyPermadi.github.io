@@ -1,0 +1,30 @@
+<html>
+<head>
+<link rel=icon type=image/png sizes=48x48 href=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADBQTFRF/vv76ZOT5nt78a6uyAAA9MfH9tjY3UhI+unp1jEx4VhY4mdn1CEhzgcHzxMT////3jVv7gAAABB0Uk5T////////////////////AOAjXRkAAAEUSURBVHja7JTbcsQgCIYVyRowyvu/bTnodqfTdLrXKxeJoh8/BCZJ3rS0gQ18HFD+BOCHD6g2yMctgNhePRk7VWaGxw2QEVnkeKaC2C8iPlIy9fySn78TY1jXDeEQX19XhWJER2kYKYy4lMxRMyGKBZeCk+gOVLuNdogIuutRg8T+0FWdeoP0/insyh5I8zbBBVS8dAWCy5oCBSqSA7khcdX0wYESUciVp8GZEssCnpFgKejz6sNEw0YuZxmFTdhugKe0+lD1o1pp2kGYAOX8YFMMoIgXEwDhLHsqBaC91qB9HrUVKWaJSLvaGKLRAVSwksCdzdNpRC3/NnyzE4T/nlbvRYd3xjvfz/f+CWxgA9/2JcAAZHN5jrhtLY0AAAAASUVORK5CYII=>
+<title>TV One</title>
+</head>
+<body style=background:#000;box-sizing:border-box;margin:0;padding:0>
+<script src=hls.js></script>
+<video style=width:100vw;height:100vh id=video controls="" src=blob:https://hls-js.netlify.app/48b48da4-be42-4b62-bf2a-c240eaaa25d4></video>
+<script>
+var video=document.getElementById('video');
+var source='http://rr2.dens.tv/s/s105/01.m3u8';
+if(Hls.isSupported()){
+var hls=new Hls({
+debug:false,
+});
+hls.loadSource(source);
+hls.attachMedia(video);
+hls.on(Hls.Events.MEDIA_ATTACHED, function(){
+video.muted=false;
+video.play();
+});
+}
+else if(video.canPlayType('application/vnd.apple.mpegurl')){
+video.src=(source);
+video.addEventListener('canplay', function(){
+video.play();
+});
+}
+</script>
+</body></html>
