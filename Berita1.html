@@ -4,11 +4,11 @@
 <title>Berita Satu</title>
 </head>
 <body style=background:#000;box-sizing:border-box;margin:0;padding:0>
-<script src=hls.js></script>
+<script src=https://cdn.jsdelivr.net/npm/hls.js></script>
 <video style=width:100vw;height:100vh id=video controls="" src=blob:https://hls-js.netlify.app/48b48da4-be42-4b62-bf2a-c240eaaa25d4></video>
 <script>
 var video=document.getElementById('video');
-var source='http://edge.linknetott.swiftserve.com/live/BsNew/amlst:beritasatunewsbs/playlist.m3u8';
+var source='https://b1english.beritasatumedia.com/Beritasatu/B1English_manifest.m3u8';
 if(Hls.isSupported()){
 var hls=new Hls({
 debug:false,
