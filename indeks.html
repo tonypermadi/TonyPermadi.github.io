@@ -145,7 +145,7 @@ Streaming Radio&#160; <span class=genre>Genre</span>
 </nav>
 
 <script>
-let currentYear=currentDate.getFullYear();let track_genre=document.querySelector(".genre");let playpause_btn=document.querySelector(".playpause-track");let next_btn=document.querySelector(".next-track");let track_index=0;let isPlaying=false;let curr_track=document.createElement('audio');curr_track.preload='none';let track_list=[
+let currentDate=new Date();let currentYear=currentDate.getFullYear();let currentYearElement=document.getElementById('currentYear');currentYearElement.textContent=currentYear;let track_genre=document.querySelector(".genre");let playpause_btn=document.querySelector(".playpause-track");let next_btn=document.querySelector(".next-track");let track_index=0;let isPlaying=false;let curr_track=document.createElement('audio');curr_track.preload='none';let track_list=[
 {genre:"Jazz",path:"data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA"},
 {genre:"Jazz",path:"https://jking.cdnstream1.com/b22139_128mp3"},
 {genre:"1980s",path:"https://makri.cdnstream.com/1898_128"},
